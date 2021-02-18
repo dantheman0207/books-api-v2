@@ -1,0 +1,19 @@
+{
+  "name": "books-api-v2",
+  "version": "1.0.0",
+  "description": "API for note-taking service directed at books",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dantheman0207/books-api-v2.git"
+  },
+  "author": "Daniel Ransom",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dantheman0207/books-api-v2/issues"
+  },
+  "homepage": "https://github.com/dantheman0207/books-api-v2#readme"
+}
