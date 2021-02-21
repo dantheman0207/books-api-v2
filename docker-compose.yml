@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres
+    environment: 
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  books-api:
+    build:
+      context: .
+    environment:
+      PGHOST: postgres
+      PGUSER: postgres
+      PGPASSWORD: postgres
+      PGDATABASE: postgres
+      NODE_ENV: test
+    ports:
+      - '3000:3000'
