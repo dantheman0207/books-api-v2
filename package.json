@@ -5,7 +5,6 @@
   "author": "Daniel Ransom",
   "scripts": {
     "start": "node server",
-    "compose": "docker-compose up",
     "test": "NODE_ENV=test mocha"
   },
   "dependencies": {

@@ -2,7 +2,7 @@
     "development": {
         "username": "daniel",
         "password": "daniel",
-        "database": "database_test",
+        "database": "daniel",
         "host": "127.0.0.1",
         "port": "5432",
         "dialect": "postgres"
@@ -10,9 +10,10 @@
     "test": {
         "username": "daniel",
         "password": "daniel",
-        "database": "database_test",
+        "database": "daniel",
         "host": "127.0.0.1",
         "port": "5432",
-        "dialect": "postgres"
+        "dialect": "postgres",
+        "logging": false
     }
 }

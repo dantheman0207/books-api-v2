@@ -9,26 +9,32 @@ class Tester {
         this.models = models
         this.models.sequelize.sync() // set up db
     }
-    // Returns a Promise which resolves to a book : Sequelize object
-    createBook () {
-        return this.models.Book.create(this.data.book)
+    // Returns a Promise which resolves to an object containing book id
+    createBook (bookArg) {
+        const book = bookArg || this.data.book
+        return this.models.Book.create(book)
             .then(book => {
                 return { BookId: book.id }
+            })
+            .catch(err => {
+                console.error('[Tester:createBook]: Failed to create book')
+                console.error(err)
             })
     }
 
     createBookAndNote () {
-        return this.models.Book.create(this.data.book)
-            .then(book => {
-                return book.id
-            })
-            .then((BookId) => {
+        return this.createBook()
+            .then(({ BookId }) => {
                 let foreign_key = { BookId }
-                let note = Object.assign(this.data.note, foreign_key)
-                return Promise.all([BookId, this.models.Notes.create(note)])
+                let note = Object.assign({}, this.data.note, foreign_key)
+                return Promise.all([ BookId, this.models.Notes.create(note) ])
             })
-            .then(([BookId, note]) => {
-                return {BookId, NoteId : note.id}
+            .then(([ BookId, note ]) => {
+                return { BookId, NoteId : note.id }
+            })
+            .catch(err => {
+                console.error('[Tester:createBookAndNote]: Error creating book or note')
+                console.error(err)
             })
     }
 
@@ -36,7 +42,7 @@ class Tester {
         return this.duplicateData(amt, this.data)
                     .then(books => {
                         books.forEach(book => {
-                            this.createBook(this.model, book)
+                            this.createBook(book)
                         })
                     })
     }
