@@ -55,12 +55,13 @@ describe('Note', function () {
 
     describe('DELETE', function () {
         it('lets you remove a note', function (done) {
+            this.timeout(5000)
             let url = `/api/book/${tester.data.book.id}/note/${tester.data.note.id}`
             request(app)
                 .delete(url)
                 .then(async function () {
                     // if you don't sleep the database won't catch up with the test
-                    await sleep(1500)
+                    await sleep(2200)
                 })
                 .then(() => {
                     return tester.models.Notes.findByPk(tester.data.note.id)
