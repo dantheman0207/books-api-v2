@@ -24,7 +24,7 @@ describe('Book', function () {
     })
 
     describe('POST', function () {
-        it('creates a book', function (done) {
+        it('lets  you create a book', function (done) {
             const url = '/api/book'
             const name = tester.data.book.name
             const isbn = tester.data.book.isbn
@@ -62,7 +62,7 @@ describe('Book', function () {
     })
 
     describe('DELETE', function () {
-        it('successfully removes a book', function (done) {
+        it('lets you remove a book', function (done) {
             const url = `/api/book/${tester.data.book.id}`
             tester.createBook()
                 .then(() => {
@@ -80,7 +80,7 @@ describe('Book', function () {
                 })
         })
 
-        it('successfully removes a book and child notes', function (done) {
+        it('lets you remove a book and child notes', function (done) {
             const url = `/api/book/${tester.data.book.id}`
             tester.createBookAndNote()
                 .then(() => {
